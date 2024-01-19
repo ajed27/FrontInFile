@@ -1,7 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { RedirectGuard } from 'src/app/core/guards/redirect.guard';
+import { AuthGuard } from 'src/app/core';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    // canActivate: [RedirectGuard]
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,1 +1,52 @@
-<p>register-form works!</p>
+<h1 class="text-center text-primary text-2xl py-2">Registrar</h1>
+<form (ngSubmit)="sendRegsiter()" [formGroup]="registerForm" class="space-y-4">
+  <div>
+    <div class="relative">
+      <input
+        #nameInput
+        formControlName="email"
+        placeholder="Ingrese correo"
+        type="email"
+        class="w-full rounded bg-transparent border-info border my-2"
+      >
+    </div>
+    <div *ngIf="email?.touched && email?.invalid">
+      <p *ngIf="email?.hasError('required')" class="font-medium text-error text-xs mt-1 ml-1">Este campo es obligatorio</p>
+    </div>
+  </div>
+  <div>
+    <div class="relative">
+      <input
+        #nameInput
+        formControlName="username"
+        placeholder="Ingrese usuario"
+        type="text"
+        class="w-full rounded bg-transparent border-info border my-2"
+      >
+    </div>
+    <div *ngIf="username?.touched && username?.invalid">
+      <p *ngIf="username?.hasError('required')" class="font-medium text-error text-xs mt-1 ml-1">Este campo es obligatorio</p>
+    </div>
+  </div>
+  <div>
+    <div class="relative">
+      <input
+        placeholder="Ingrese password"
+        formControlName="password"
+        [type]="showPassword ? 'text' : 'password'"
+        class="w-full rounded bg-transparent border-info border"
+      >
+      <button type="button" class="p-2 absolute rigth-2" (click)="showPassword = !showPassword">
+      </button>
+    </div>
+    <div *ngIf="password?.touched && password?.invalid">
+      <p *ngIf="password?.hasError('required')" class="font-medium text-error text-xs mt-1 ml-1">Este campo es obligatorio</p>
+    </div>
+  </div>
+  <div>
+    <button class="w-full font-medium rounded text-sm px-5 py-2 bg-success hover:bg-info text-secondary disabled:bg-primary" type="submit" [disabled]="!registerForm.valid">
+      Registrar
+    </button>
+  </div>
+</form>
+
