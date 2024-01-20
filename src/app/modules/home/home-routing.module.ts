@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewsComponent, OneNewComponent } from './pages';
-import { LayoutComponent } from './pages/layout/layout.component';
+
+import { CategoryComponent, LayoutComponent, NewsComponent, OneNewComponent } from './pages';
 
 const routes: Routes = [
   {
@@ -15,6 +15,10 @@ const routes: Routes = [
       {
         path: ':id',
         component: OneNewComponent,
+      },
+      {
+        path: '1/category',
+        component: CategoryComponent
       },
     ]
   },

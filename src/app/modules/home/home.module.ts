@@ -1,24 +1,37 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { MatIconModule } from "@angular/material/icon";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
 
 import { HomeRoutingModule } from './home-routing.module';
-import { NewsComponent } from './pages/news/news.component';
-import { OneNewComponent } from './pages/one-new/one-new.component';
-import { FooterComponent, NavbarComponent } from 'src/app/core';
-import { LayoutComponent } from './pages/layout/layout.component';
+import { NavbarComponent, FooterComponent } from './shared';
+import { CategoryComponent, NewsComponent, LayoutComponent, OneNewComponent } from './pages';
+import { RecommendComponent } from './pages/recommend/recommend.component';
 
 
 @NgModule({
   declarations: [
     NewsComponent,
     OneNewComponent,
-    FooterComponent,
-    NavbarComponent,
     LayoutComponent,
+    CategoryComponent,
+    NavbarComponent,
+    FooterComponent,
+    RecommendComponent,
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    MatTableModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
   ]
 })
 export class HomeModule { }

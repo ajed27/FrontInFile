@@ -32,9 +32,13 @@ export class AuthService {
   register(body: Regsiter):Observable<Regsiter> {
     return this.apiService.store('register', body).pipe(
       tap( (resp: any) => {
-        this.localStorageService.saveItem('token', resp.token);
-        this.localStorageService.saveItem('username', body.user);
-        this.router.navigateByUrl('/home');
+        if( resp.code === 1000 ){
+          this.localStorageService.saveItem('token', resp.reply.token);
+          this.localStorageService.saveItem('userId', resp.reply.idUser);
+          this.router.navigateByUrl('/home');
+        }else{
+          this.router.navigateByUrl('')
+        }
       })
     );
   }
@@ -42,7 +46,7 @@ export class AuthService {
   signOut() {
     setTimeout(async () => {
       this.localStorageService.removeItem('token');
-      this.localStorageService.removeItem('username');
+      this.localStorageService.removeItem('userId');
       this.router.navigateByUrl('/');
     }, 2000)
   }

@@ -15,6 +15,10 @@ export class NewsService {
     return this.apiService.getAll('news')
   }
 
+  getRecommendNews(): Observable<News[]>{
+    return this.apiService.getAll('news/recommend')
+  }
+
   getOneNew(idNew: number): Observable<News>{
     return this.apiService.getById('news', idNew);
   }

@@ -1,3 +1,22 @@
-<app-navbar class="h-full w-full" />
-<router-outlet></router-outlet>
-<app-footer />
+<div class="drawer">
+  <input id="my-drawer-3" type="checkbox" (click)="clickMenu()" [checked]="click" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col">
+    <app-navbar></app-navbar>
+    <div class="mt-16">
+      <router-outlet />
+    </div>
+    <app-recommend></app-recommend>
+    <app-footer></app-footer>
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-3" class=""></label>
+    <ul class="fixed h-full my-14 menu p-4 w-80 bg-base-100 text-lg opacity-80">
+      <li>
+        <button (click)="clickMenu()" [routerLink]="'1/category'">Categorias</button>
+      </li>
+      <li>
+        <button (click)="logOut()">Cerrar Sesión</button>
+      </li>
+    </ul>
+  </div>
+</div>

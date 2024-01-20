@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, Injector } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { LocalStorageService } from '../services';
 
@@ -11,13 +11,11 @@ export class RedirectGuard implements CanActivate {
   private router = inject(Router);
 
   canActivate(): boolean {
-
     const token = this.localStorageService.getItem('token');
+    
     if (token) {
       this.router.navigateByUrl('/home')
     }
-
     return true;
   }
-
 }

@@ -18,14 +18,14 @@
     <div class="relative">
       <input
         #nameInput
-        formControlName="username"
+        formControlName="user"
         placeholder="Ingrese usuario"
         type="text"
         class="w-full rounded bg-transparent border-info border my-2"
       >
     </div>
-    <div *ngIf="username?.touched && username?.invalid">
-      <p *ngIf="username?.hasError('required')" class="font-medium text-error text-xs mt-1 ml-1">Este campo es obligatorio</p>
+    <div *ngIf="user?.touched && user?.invalid">
+      <p *ngIf="user?.hasError('required')" class="font-medium text-error text-xs mt-1 ml-1">Este campo es obligatorio</p>
     </div>
   </div>
   <div>

@@ -24,8 +24,8 @@ export class RegisterFormComponent {
     return this.registerForm.get('email');
   }
 
-  get username() {
-    return this.registerForm.get('username');
+  get user() {
+    return this.registerForm.get('user');
   }
 
   get password() {
@@ -44,7 +44,7 @@ export class RegisterFormComponent {
 
   private buildForm() {
     this.registerForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      user: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', Validators.required],
     });
