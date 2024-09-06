@@ -1,14 +1,18 @@
-<div class="my-8 mx-16">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container matColumnDef="idCategory">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element">{{element.idCategory}}</td>
-    </ng-container>
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef>Categoría</th>
-      <td mat-cell *matCellDef="let element">{{element.category}}</td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+<br>
+<br>
+<p class="text-primary text-2xl text-center">Noticias</p>
+<hr>
+<div class="my-8 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8 mx-16">
+  <div *ngFor="let item of data" class="card rounded-lg bg-info shadow-lg shadow-slate-900 border-2 border-primary hover:scale-105 transition-all">
+    <div class="card-body mb-3 items-center text-info-content text-center">
+      <img src="{{item.image}}" class="rounded-lg" alt="{{item.image}}.png">
+      <h2 class="card-title text-lg">{{item.news}}</h2>
+      <p class="text-sm">{{item.description}}</p>
+      <br>
+      <div class="card-actions">
+        <button [routerLink]="'/home/'+item.idNew" class="btn rounded-md p-2 border-secondary btn-success border-2 text-success-content text-sm  hover:scale-110 hover:text-info-content transition-all">Leer más</button>
+      </div>
+    </div>
+  </div>
 </div>
+

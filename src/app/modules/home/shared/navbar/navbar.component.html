@@ -1,4 +1,4 @@
-<div class="w-full navbar bg-primary text-primary-content shadow-slate-900 shadow-md h-10 fixed z-10">
+<div class="w-full navbar bg-info text-info-content shadow-slate-900 shadow-md h-16 fixed z-10">
   <div class="flex-none md:hidden">
     <label for="my-drawer-3" class="btn btn-square btn-ghost hover:rotate-6 transition-all">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-10 h-10">
@@ -7,15 +7,21 @@
     </label>
   </div>
   <div class="flex-1">
+    <img class="w-16 h-16 my-auto" src="https://www.infile.com.pa/images/logo.png" alt="infile.png">
     <a class="btn btn-ghost normal-case text-2xl" [routerLink]="'/'">
-      App InFile
+      App
     </a>
   </div>
-  <div class="flex-none hidden md:block">
-    <ul class="h-full menu menu-horizontal px-1 text-lg">
-      <li>
-        <a [routerLink]="'1/category'">Categorias</a>
+  <div class="dropdown dropdown-hover mr-48">
+    <div tabindex="0" role="button" class="btn btn-info text-info-content text-lg">Categorias</div>
+    <ul tabindex="0" class="dropdown-content menu bg-info w-52">
+      <li *ngFor="let category of categoriesList">
+        <a [routerLink]="'/home/category/'+ category.idCategory">{{category.category}}</a>
       </li>
+    </ul>
+  </div>
+  <div class="flex-none hidden md:block">
+    <ul class="h-full menu menu-horizontal my-auto px-5 text-lg">
       <li>
         <a (click)="logOut()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNklEQVR4nO3aMU4DMRCF4R8KWiRofRHEwWi3gcBNOEEaxAEoAhR0tCzXcGTJkdAqGzyJgt4MfpJLS/NpdtdrywBnwAPwDWSRMQKLWltz7gUKnxt3FshYJ12hk+sfnWnORq+WbK2rQ46c3Dsiltw7IpabKB0pGQgCMaVDjphHYAmce+/Iqtb0YsEoQhLwWesqqAuvkL0wqpAp5vU3jDLEhFGHbMNc4hTShPECmWLephhPkJ0Yb5BZzCGQE+Bd4NhodSjktL547iFhHi2pz3B2BEm71hIvkBRhQUwt/1vqkNT6O68MSZY9iSokRdhYpShb3Y8ohw/PwFOE46C90iF/kCFCRwZrXaqQ3CFiyb0jYsn/tiNjnVAusqhdqvmyTFoIHOfMjVsLpFzuKphNZxRG6URBNF88WwOccZGxk5w4qAAAAABJRU5ErkJggg==" class="h-10 w-10"></a>
       </li>

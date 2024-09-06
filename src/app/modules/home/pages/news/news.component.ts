@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { NewsService } from './service/news.service';
 import { News } from './model/news';
+import { Response } from 'src/app/core';
 
 @Component({
   selector: 'app-news',
@@ -12,8 +13,8 @@ export class NewsComponent implements OnInit {
   public data: News[] = [];
 
   public getNews(){
-    this.news.getAllNews().subscribe((resp: any) =>{
-      this.data = resp.reply;
+    this.news.getAllNews<News>().subscribe((response) =>{
+      this.data = response.data;
     });
   }
 

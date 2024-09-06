@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ApiService } from 'src/app/core';
+import { ApiService, Response } from 'src/app/core';
 import { Category } from '../model';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class CategoryService {
 
   private apiService = inject(ApiService);
 
-  getCategories(): Observable<Category>{
+  getCategories<T>(): Observable<Response<T[]>>{
     return this.apiService.getAll('category')
   }
 

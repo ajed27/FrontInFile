@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ApiService } from 'src/app/core';
-import { News } from '../model/news';
+import { ApiService, Response } from 'src/app/core';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +10,19 @@ export class NewsService {
 
   private apiService = inject(ApiService);
 
-  getAllNews(): Observable<News[]>{
+  getAllNews<T>(): Observable<Response<T[]>>{
     return this.apiService.getAll('news')
   }
 
-  getRecommendNews(): Observable<News[]>{
-    return this.apiService.getAll('news/recommend')
+  getRecommendNews<T>(idCategory: number): Observable<Response<T[]>>{
+    return this.apiService.getAllPage('news/recommend', idCategory)
   }
 
-  getOneNew(idNew: number): Observable<News>{
+  getOneNew<T>(idNew: number): Observable<Response<T>>{
     return this.apiService.getById('news', idNew);
+  }
+
+  getNewByCategroy<T>(idCategory: number): Observable<Response<T[]>>{
+    return this.apiService.getAllPage('news/category', idCategory)
   }
 }

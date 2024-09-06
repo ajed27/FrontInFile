@@ -16,11 +16,11 @@ export class AuthService {
   private router = inject(Router);
 
   login(body: Login):Observable<Login> {
-    return this.apiService.store('login', body).pipe(
+    return this.apiService.store<Login>('login', body).pipe(
       tap( (resp: any) => {
         if( resp.code === 1000 ){
-          this.localStorageService.saveItem('token', resp.reply.token);
-          this.localStorageService.saveItem('userId', resp.reply.idUser);
+          this.localStorageService.saveItem('token', resp.data.token);
+          this.localStorageService.saveItem('userId', resp.data.idUser);
           this.router.navigateByUrl('/home');
         }else{
           this.router.navigateByUrl('')
@@ -30,11 +30,11 @@ export class AuthService {
   }
 
   register(body: Regsiter):Observable<Regsiter> {
-    return this.apiService.store('register', body).pipe(
+    return this.apiService.store<Regsiter>('register', body).pipe(
       tap( (resp: any) => {
         if( resp.code === 1000 ){
-          this.localStorageService.saveItem('token', resp.reply.token);
-          this.localStorageService.saveItem('userId', resp.reply.idUser);
+          this.localStorageService.saveItem('token', resp.data.token);
+          this.localStorageService.saveItem('userId', resp.data.idUser);
           this.router.navigateByUrl('/home');
         }else{
           this.router.navigateByUrl('')

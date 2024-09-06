@@ -17,7 +17,7 @@ const routes: Routes = [
         component: OneNewComponent,
       },
       {
-        path: '1/category',
+        path: 'category/:id',
         component: CategoryComponent
       },
     ]

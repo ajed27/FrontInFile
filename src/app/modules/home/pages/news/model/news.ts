@@ -3,4 +3,5 @@ export interface News {
   news: string;
   description: string;
   image: string;
+  idCategory: number;
 }

@@ -9,8 +9,7 @@ import { MatButtonModule } from "@angular/material/button";
 
 import { HomeRoutingModule } from './home-routing.module';
 import { NavbarComponent, FooterComponent } from './shared';
-import { CategoryComponent, NewsComponent, LayoutComponent, OneNewComponent } from './pages';
-import { RecommendComponent } from './pages/recommend/recommend.component';
+import { CategoryComponent, NewsComponent, LayoutComponent, OneNewComponent, RecommendComponent } from './pages';
 
 
 @NgModule({

@@ -1,8 +1,8 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { CategoryService } from './service';
-import { Category } from './model';
+import { News, NewsService } from '../news';
+import { Response } from 'src/app/core';
 
 @Component({
   selector: 'app-category',
@@ -10,39 +10,26 @@ import { Category } from './model';
 })
 export class CategoryComponent implements OnInit{
 
-  private categories = inject(CategoryService);
+  private router = inject(Router);
+  private news = inject(NewsService);
+  private activatedRoute = inject(ActivatedRoute);
+  public data: News[] = [];
 
-  public columns: tableData[] = [
-    {
-      id: 'idCategory',
-      column: 'ID'
-    },
-    {
-      id: 'category',
-      column: 'Categoria'
-    }
-  ]
-
-  displayedColumns: string[] = ['idCategory', 'category'];
-  dataSource: MatTableDataSource<Category>;
-
-  constructor(){
-    this.dataSource = new MatTableDataSource();
-  }
-
-  public getCategories(){
-    this.categories.getCategories().subscribe((resp: any) => {
-      this.dataSource = new MatTableDataSource<Category>(resp.reply);
+  public getNews(idCategory: number){
+    this.news.getNewByCategroy<News>(idCategory).subscribe((response: Response<News[]>) =>{
+      this.data = response.data;
     });
   }
 
   ngOnInit(): void {
-    this.getCategories();
+    this.activatedRoute.params.subscribe((params) => {
+      const id: number = params['id'];
+      this.getNews(id);
+    });
   }
 
-}
+  selectCategory(id: number){
+    this.router.navigateByUrl('/category/' + id);
+  }
 
-interface tableData{
-  id: string;
-  column: string;
 }
